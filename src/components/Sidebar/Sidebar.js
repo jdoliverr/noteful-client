@@ -4,7 +4,7 @@ import Folder from './Folder/Folder';
 class Sidebar extends Component {
     render() {
         const folders = this.props.folders.map(folder => {
-            return <Folder name={folder.name} key={folder.id}/>
+            return <Folder name={folder.name} id={folder.id} key={folder.id} changeFolder={this.props.changeFolder}/>
         })
 
 

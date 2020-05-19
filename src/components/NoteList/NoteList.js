@@ -5,7 +5,15 @@ class NoteList extends Component {
     render() {
         const notes = this.props.notes.map(note => {
             const date = new Date(note.modified);
-            return <Note name={note.name} key={note.id} date={date.toLocaleString()} />
+
+            if(this.props.folderId === 'all') {
+                return <Note name={note.name} key={note.id} date={date.toLocaleString()} />
+            } else if(note.folderId === this.props.folderId) {
+                console.log(`Note ID = Folder ID`);
+                return <Note name={note.name} key={note.id} date={date.toLocaleString()} />
+            }
+            
+            
         })
 
         return (
