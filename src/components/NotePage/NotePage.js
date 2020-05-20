@@ -13,7 +13,7 @@ class NotePage extends Component {
                     <SingleFolder noteId={this.props.noteId} onHomeClick={this.props.onHomeClick}/>
                 </section>
                 <section className="main-note-container">
-                    <SingleNote noteId={this.props.noteId} />
+                    <SingleNote noteId={this.props.noteId} onHomeClick={this.props.onHomeClick}/>
                 </section>
             </div>
         )

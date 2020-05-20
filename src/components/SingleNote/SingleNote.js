@@ -5,22 +5,54 @@ import NotefulContext from '../../NotefulContext'
 class SingleNote extends Component {
     static contextType = NotefulContext;
 
+    deleteNoteRequest(noteId, callback) {
+        const baseUrl = 'http://localhost:9090/notes/' + noteId;
+        console.log(baseUrl)
+        fetch(baseUrl, {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+        .then(res => {
+            if (!res.ok) {
+                throw new Error(res.status)
+            }
+        return res.json();
+        })
+        .then(data => {
+            callback(noteId)
+        })
+        .catch(error => {
+            console.error(error)
+        })
+    }
+
     render() {
         const currentNote = this.context.notes.find(note => note.id === this.props.noteId);
         const date = new Date(currentNote.modified);
         return (
-            <>
-                <div className="note-container">
-                    <NavLink to={`/note/${this.props.noteId}`} className="note-link">{currentNote.name}</NavLink>
-                    <div className="note-bottom">
-                        <div className="note-mod">{date.toLocaleString()}</div>
-                        <button className="note-delete">Delete Note</button>
+            <NotefulContext.Consumer>
+                {(context) => (
+                <>
+                    <div className="note-container">
+                        <NavLink to={`/note/${this.props.noteId}`} className="note-link">{currentNote.name}</NavLink>
+                        <div className="note-bottom">
+                            <div className="note-mod">{date.toLocaleString()}</div>
+                            <button 
+                                className="note-delete" 
+                                onClick={() => {
+                                    this.deleteNoteRequest(currentNote.id, context.deleteNote)
+                                    this.props.onHomeClick()
+                                }}>Delete Note</button>
+                        </div>
                     </div>
-                </div>
-                <div className="note-content">
-                    <p>{currentNote.content}</p>
-                </div>
-            </>
+                    <div className="note-content">
+                        <p>{currentNote.content}</p>
+                    </div>
+                </>
+            )}
+            </NotefulContext.Consumer>
         )
     }
 }
