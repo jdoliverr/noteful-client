@@ -9,7 +9,6 @@ class NoteList extends Component {
             if(this.props.folderId === 'all') {
                 return <Note name={note.name} key={note.id} id={note.id} folderId={note.folderId} date={date.toLocaleString()} />
             } else if(note.folderId === this.props.folderId) {
-                console.log(`Note ID = Folder ID`);
                 return <Note name={note.name} key={note.id} id={note.id} folderId={note.folderId} date={date.toLocaleString()} />
             }
             
