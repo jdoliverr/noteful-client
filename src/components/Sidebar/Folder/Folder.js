@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 
 class Folder extends Component {
 
-    handleChangeFolder(id) {
-        this.props.changeFolder(id);
-    }
-
     render() {
+        const folderId = this.props.id;
         return (
             <div className="folder-container">
-                <a  className="folder-label" onClick={(id) => this.handleChangeFolder(this.props.id)}>{this.props.name}</a>
+                <NavLink to={`/folder/${folderId}`}  className="folder-label" >{this.props.name}</NavLink>
             </div>
 
         )

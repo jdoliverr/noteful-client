@@ -54,37 +54,47 @@ class App extends Component {
     return (
       <div className='App'>
           <header>
-            <NavLink to='/' className="header-link" onClick={this.resetFolderId}>Noteful</NavLink>
+            <NavLink to='/' className="header-link">Noteful</NavLink>
           </header>
           <main>
             <Switch>
                 <Route 
                   exact path='/' 
                   render={() => {
+                    const folderId = 'all'
                     return (
                       <MainPage 
                         folders={this.state.folders}
                         notes={this.state.notes}
-                        folderId={this.state.folderId}
-                        changeFolder={this.changeFolder}
+                        folderId={folderId}
                       />)
                   }}
                 />
                 <Route 
-                  path='/note/:noteId'
-                      render={(routeProps) => {
-                        const currentNote = this.state.notes.find(note => note.id === routeProps.match.params.noteId);
-                        console.log(currentNote)
-                        return (
-
-                          <NotePage
-                            folders={this.state.folders}
-                            currentNote={currentNote}
-                            onHomeClick={() => routeProps.history.push('/')}
-                          />)
-
+                  path='/folder/:folderId'
+                  render={(routeProps) => {
+                    const currentNotes = this.state.notes.filter(note => note.folderId === routeProps.match.params.folderId);
+                    return (
+                      <MainPage
+                        folders={this.state.folders}
+                        notes={currentNotes}
+                        folderId = {routeProps.match.params.folderId}
+                      />
+                    )
                   }}
-
+                />
+                <Route 
+                  path='/note/:noteId'
+                  render={(routeProps) => {
+                    const currentNote = this.state.notes.find(note => note.id === routeProps.match.params.noteId);
+                    console.log(currentNote)
+                    return (
+                      <NotePage
+                        folders={this.state.folders}
+                        currentNote={currentNote}
+                        onHomeClick={() => routeProps.history.push('/')}
+                      />)
+                  }}
                 />
             </Switch>
           </main>
