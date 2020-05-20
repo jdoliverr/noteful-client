@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Folder from './Folder/Folder';
+import Folder from '../Folder/Folder';
 
 class Sidebar extends Component {
     render() {

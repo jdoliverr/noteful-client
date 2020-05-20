@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import SingleFolder from '../Sidebar/SingleFolder/SingleFolder'
-import SingleNote from '../NoteList/SingleNote/SingleNote'
+import SingleFolder from '../SingleFolder/SingleFolder'
+import SingleNote from '../SingleNote/SingleNote'
 
 class NotePage extends Component {
     render() {
