@@ -10,9 +10,7 @@ class Routes extends React.Component {
         super(props)
         this.state = {
           folders: STORE.folders,
-          notes: STORE.notes,
-          folderId: 'all'
-          
+          notes: STORE.notes
         }
     }
     
