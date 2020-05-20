@@ -31,7 +31,7 @@ class Routes extends React.Component {
                         <MainPage
                             folders={this.props.folders}
                             notes={currentNotes}
-                            folderId = {routeProps.match.params.folderId}
+                            folderId={routeProps.match.params.folderId}
                         />
                         )
                     }}

@@ -11,8 +11,6 @@ class NoteList extends Component {
             } else if(note.folderId === this.props.folderId) {
                 return <Note name={note.name} key={note.id} id={note.id} folderId={note.folderId} date={date.toLocaleString()} />
             }
-            
-            
         })
 
         return (
