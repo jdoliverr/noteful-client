@@ -9,7 +9,7 @@ class MainPage extends Component {
         return (
             <div className="wrapper">
                 <Sidebar />
-                <NoteList notes={this.props.notes} folderId={this.props.folderId}/>
+                <NoteList folderId={this.props.folderId}/>
             </div>
         )
     }

@@ -7,6 +7,7 @@ class NoteList extends Component {
 
     render() {
         let newNotes = [];
+
         if(this.props.folderId === undefined) {
             newNotes = this.context.notes;
         } else {
