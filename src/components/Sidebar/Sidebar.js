@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import NotefulContext from '../../NotefulContext'
 import Folder from '../Folder/Folder';
 
 class Sidebar extends Component {
+   static contextType = NotefulContext;
+
     render() {
-        const folders = this.props.folders.map(folder => {
-            return <Folder name={folder.name} id={folder.id} key={folder.id} changeFolder={this.props.changeFolder}/>
+        const folders = this.context.folders.map(folder => {
+            return <Folder name={folder.name} id={folder.id} key={folder.id} />
         })
 
 

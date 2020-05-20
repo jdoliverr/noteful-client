@@ -3,17 +3,17 @@ import SingleFolder from '../SingleFolder/SingleFolder'
 import SingleNote from '../SingleNote/SingleNote'
 
 class NotePage extends Component {
-    render() {
-        const currentFolder = this.props.folders.find(folder => folder.id === this.props.currentNote.folderId)
 
-        console.log(currentFolder)
+
+    render() {
+
         return (
             <div className="wrapper">
                 <section className="main-folder-container">
-                    <SingleFolder currentFolder={currentFolder} onHomeClick={this.props.onHomeClick}/>
+                    <SingleFolder noteId={this.props.noteId} onHomeClick={this.props.onHomeClick}/>
                 </section>
                 <section className="main-note-container">
-                    <SingleNote currentNote={this.props.currentNote} />
+                    <SingleNote noteId={this.props.noteId} />
                 </section>
             </div>
         )

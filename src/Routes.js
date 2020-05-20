@@ -1,8 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import NotePage from './components/NotePage/NotePage'
-import MainPage from './components/MainPage/MainPage'
-
+import NotePage from './components/NotePage/NotePage';
+import MainPage from './components/MainPage/MainPage';
 
 
 class Routes extends React.Component {
@@ -13,24 +12,13 @@ class Routes extends React.Component {
             <Switch>
                 <Route 
                     exact path='/' 
-                    render={() => {
-                        const folderId = 'all'
-                        return (
-                        <MainPage 
-                            folders={this.props.folders}
-                            notes={this.props.notes}
-                            folderId={folderId}
-                        />)
-                    }}
+                    component={MainPage}
                 />
                 <Route 
                     path='/folder/:folderId'
                     render={(routeProps) => {
-                        const currentNotes = this.props.notes.filter(note => note.folderId === routeProps.match.params.folderId);
                         return (
                         <MainPage
-                            folders={this.props.folders}
-                            notes={currentNotes}
                             folderId={routeProps.match.params.folderId}
                         />
                         )
@@ -39,12 +27,9 @@ class Routes extends React.Component {
                 <Route 
                     path='/note/:noteId'
                     render={(routeProps) => {
-                        const currentNote = this.props.notes.find(note => note.id === routeProps.match.params.noteId);
-                        console.log(currentNote)
                         return (
                         <NotePage
-                            folders={this.props.folders}
-                            currentNote={currentNote}
+                            noteId={routeProps.match.params.noteId}
                             onHomeClick={() => routeProps.history.push('/')}
                         />)
                     }}

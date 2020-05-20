@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
+import NotefulContext from '../../NotefulContext'
 import Note from '../Note/Note';
 
 class NoteList extends Component {
-    render() {
-        const notes = this.props.notes.map(note => {
-            const date = new Date(note.modified);
+    static contextType = NotefulContext;
 
-            if(this.props.folderId === 'all') {
-                return <Note name={note.name} key={note.id} id={note.id} folderId={note.folderId} date={date.toLocaleString()} />
-            } else if(note.folderId === this.props.folderId) {
-                return <Note name={note.name} key={note.id} id={note.id} folderId={note.folderId} date={date.toLocaleString()} />
-            }
+    render() {
+        let newNotes = [];
+        if(this.props.folderId === undefined) {
+            newNotes = this.context.notes;
+        } else {
+            newNotes = this.context.notes.filter(note => note.folderId === this.props.folderId)
+        }
+
+        const notes = newNotes.map(note => {
+            const date = new Date(note.modified);
+            return <Note name={note.name} key={note.id} id={note.id} folderId={note.folderId} date={date.toLocaleString()} />
         })
 
         return (

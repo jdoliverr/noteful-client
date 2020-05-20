@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import Routes from './Routes'
+import NotefulContext from './NotefulContext';
 import './App.css';
 
 class App extends Component {
@@ -61,15 +62,20 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.folders)
-    console.log(this.state.notes)
+    const contextValue = {
+      folders: this.state.folders,
+      notes: this.state.notes
+    }
+
     return (
       <div className='App'>
           <header>
             <NavLink to='/' className="header-link">Noteful</NavLink>
           </header>
           <main>
-            <Routes folders={this.state.folders} notes={this.state.notes}/>
+            <NotefulContext.Provider value={contextValue}>
+              <Routes />
+            </NotefulContext.Provider>
           </main>
       </div>
     );

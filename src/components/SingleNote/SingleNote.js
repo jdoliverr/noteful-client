@@ -1,26 +1,30 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import NotefulContext from '../../NotefulContext'
 
-class SingleFolder extends Component {
+class SingleNote extends Component {
+    static contextType = NotefulContext;
+
     render() {
-        const date = new Date(this.props.currentNote.modified);
+        const currentNote = this.context.notes.find(note => note.id === this.props.noteId);
+        const date = new Date(currentNote.modified);
         return (
             <>
                 <div className="note-container">
-                    <NavLink to={`/note/${this.props.currentNote.id}`} className="note-link">{this.props.currentNote.name}</NavLink>
+                    <NavLink to={`/note/${this.props.noteId}`} className="note-link">{currentNote.name}</NavLink>
                     <div className="note-bottom">
                         <div className="note-mod">{date.toLocaleString()}</div>
                         <button className="note-delete">Delete Note</button>
                     </div>
                 </div>
                 <div className="note-content">
-                    <p>{this.props.currentNote.content}</p>
+                    <p>{currentNote.content}</p>
                 </div>
             </>
         )
     }
 }
 
-export default SingleFolder;
+export default SingleNote;
 
 

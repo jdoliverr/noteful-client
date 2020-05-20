@@ -8,7 +8,7 @@ class MainPage extends Component {
     render() {
         return (
             <div className="wrapper">
-                <Sidebar folders={this.props.folders} changeFolder={this.props.changeFolder}/>
+                <Sidebar />
                 <NoteList notes={this.props.notes} folderId={this.props.folderId}/>
             </div>
         )
