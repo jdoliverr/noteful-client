@@ -7,10 +7,10 @@ class NoteList extends Component {
             const date = new Date(note.modified);
 
             if(this.props.folderId === 'all') {
-                return <Note name={note.name} key={note.id} date={date.toLocaleString()} />
+                return <Note name={note.name} key={note.id} id={note.id} folderId={note.folderId} date={date.toLocaleString()} />
             } else if(note.folderId === this.props.folderId) {
                 console.log(`Note ID = Folder ID`);
-                return <Note name={note.name} key={note.id} date={date.toLocaleString()} />
+                return <Note name={note.name} key={note.id} id={note.id} folderId={note.folderId} date={date.toLocaleString()} />
             }
             
             

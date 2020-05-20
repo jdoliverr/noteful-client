@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 
 class SingleFolder extends Component {
     render() {
+        const date = new Date(this.props.currentNote.modified);
         return (
             <>
                 <div className="note-container">
-                    <a href="/note" className="note-link">Note 1</a>
+                    <NavLink to={`/note/${this.props.currentNote.id}`} className="note-link">{this.props.currentNote.name}</NavLink>
                     <div className="note-bottom">
-                        <div className="note-mod">Date modified</div>
+                        <div className="note-mod">{date.toLocaleString()}</div>
                         <button className="note-delete">Delete Note</button>
                     </div>
                 </div>
                 <div className="note-content">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione dignissimos natus distinctio repudiandae, enim nam deleniti vitae placeat id soluta reprehenderit quaerat tempora autem dicta itaque similique, voluptatibus hic neque.</p>
+                    <p>{this.props.currentNote.content}</p>
                 </div>
             </>
         )

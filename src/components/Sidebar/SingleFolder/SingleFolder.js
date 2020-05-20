@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 class SingleFolder extends Component {
     render() {
         return (
-            <div class="note-view-folder-container">
-                <button class="folder-back">Go Back</button>
-                <h2 class="folder-header">Folder</h2>
+            <div className="note-view-folder-container">
+                <a onClick={this.props.onHomeClick} className="folder-back">Go Back</a>
+                <h2 className="folder-header">{this.props.currentFolder.name}</h2>
             </div> 
 
         )

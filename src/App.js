@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { Route, Link } from 'react-router-dom'
+import { Route, NavLink, Switch } from 'react-router-dom'
 import Sidebar from './components/Sidebar/Sidebar'
 import NoteList from './components/NoteList/NoteList'
 import SingleFolder from './components/Sidebar/SingleFolder/SingleFolder'
 import NotePage from './components/NotePage/NotePage'
 import MainPage from './components/MainPage/MainPage'
+import Routes from './Routes'
 import STORE from './store'
 import './App.css';
 
@@ -26,6 +27,12 @@ class App extends Component {
       notes: currentNotes
     })
   }
+
+  resetFolderId = () => {
+    this.setState({
+      folderId: 'all'
+    })
+  }
   
   changeFolder = (folderId) => {
     console.log(`changeFolder ran and state changed`)
@@ -42,14 +49,44 @@ class App extends Component {
   render() {
     console.log(this.state.folderId);
     console.log(this.state.notes);
+    
+
     return (
       <div className='App'>
           <header>
-            <a href="/" className="header-link">Noteful</a>
+            <NavLink to='/' className="header-link" onClick={this.resetFolderId}>Noteful</NavLink>
           </header>
           <main>
-            {/* <MainPage folders={this.state.folders} changeFolder={this.changeFolder} notes={this.state.notes} folderId={this.state.folderId}/> */}
-            <NotePage />
+            <Switch>
+                <Route 
+                  exact path='/' 
+                  render={() => {
+                    return (
+                      <MainPage 
+                        folders={this.state.folders}
+                        notes={this.state.notes}
+                        folderId={this.state.folderId}
+                        changeFolder={this.changeFolder}
+                      />)
+                  }}
+                />
+                <Route 
+                  path='/note/:noteId'
+                      render={(routeProps) => {
+                        const currentNote = this.state.notes.find(note => note.id === routeProps.match.params.noteId);
+                        console.log(currentNote)
+                        return (
+
+                          <NotePage
+                            folders={this.state.folders}
+                            currentNote={currentNote}
+                            onHomeClick={() => routeProps.history.push('/')}
+                          />)
+
+                  }}
+
+                />
+            </Switch>
           </main>
       </div>
     );
@@ -57,3 +94,4 @@ class App extends Component {
 }
 
 export default App;
+
