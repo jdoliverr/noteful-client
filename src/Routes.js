@@ -6,6 +6,16 @@ import STORE from './store'
 
 
 class Routes extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+          folders: STORE.folders,
+          notes: STORE.notes,
+          folderId: 'all'
+          
+        }
+    }
+    
     render() {
         return (
             <Switch>
@@ -15,8 +25,8 @@ class Routes extends React.Component {
                         const folderId = 'all'
                         return (
                         <MainPage 
-                            folders={STORE.folders}
-                            notes={STORE.notes}
+                            folders={this.state.folders}
+                            notes={this.state.notes}
                             folderId={folderId}
                         />)
                     }}
@@ -24,10 +34,10 @@ class Routes extends React.Component {
                 <Route 
                     path='/folder/:folderId'
                     render={(routeProps) => {
-                        const currentNotes = STORE.notes.filter(note => note.folderId === routeProps.match.params.folderId);
+                        const currentNotes = this.state.notes.filter(note => note.folderId === routeProps.match.params.folderId);
                         return (
                         <MainPage
-                            folders={STORE.folders}
+                            folders={this.state.folders}
                             notes={currentNotes}
                             folderId = {routeProps.match.params.folderId}
                         />
@@ -37,11 +47,11 @@ class Routes extends React.Component {
                 <Route 
                     path='/note/:noteId'
                     render={(routeProps) => {
-                        const currentNote = STORE.notes.find(note => note.id === routeProps.match.params.noteId);
+                        const currentNote = this.state.notes.find(note => note.id === routeProps.match.params.noteId);
                         console.log(currentNote)
                         return (
                         <NotePage
-                            folders={STORE.folders}
+                            folders={this.state.folders}
                             currentNote={currentNote}
                             onHomeClick={() => routeProps.history.push('/')}
                         />)
