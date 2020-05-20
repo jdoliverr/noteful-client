@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
-import NotefulContext from '../../NotefulContext'
+import { Redirect } from 'react-router-dom';
+import NotefulContext from '../../NotefulContext';
 
 class SingleFolder extends Component {
     static contextType = NotefulContext;
 
     render() {
         const currentNote = this.context.notes.find(note => note.id === this.props.noteId);
+        if(currentNote === undefined) {
+            return <Redirect to="/" />;
+        }
+        
         const currentFolder = this.context.folders.find(folder => folder.id === currentNote.folderId);
         return (
             <div className="note-view-folder-container">

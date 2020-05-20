@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import NotefulContext from '../../NotefulContext'
 
 class SingleNote extends Component {
@@ -30,6 +30,11 @@ class SingleNote extends Component {
 
     render() {
         const currentNote = this.context.notes.find(note => note.id === this.props.noteId);
+        
+        if(currentNote === undefined) {
+            return <Redirect to="/" />
+        }
+        
         const date = new Date(currentNote.modified);
         return (
             <NotefulContext.Consumer>
@@ -43,7 +48,6 @@ class SingleNote extends Component {
                                 className="note-delete" 
                                 onClick={() => {
                                     this.deleteNoteRequest(currentNote.id, context.deleteNote)
-                                    this.props.onHomeClick()
                                 }}>Delete Note</button>
                         </div>
                     </div>
