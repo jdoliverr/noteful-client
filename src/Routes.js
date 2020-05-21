@@ -6,7 +6,6 @@ import MainPage from './components/MainPage/MainPage';
 
 class Routes extends React.Component {
 
-    
     render() {
         return (
             <Switch>

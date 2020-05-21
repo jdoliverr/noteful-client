@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NotefulContext from '../../NotefulContext'
 import Folder from '../Folder/Folder';
+import AddFolderForm from '../AddFolderForm/AddFolderForm';
 
 class Sidebar extends Component {
    static contextType = NotefulContext;
@@ -17,6 +18,7 @@ class Sidebar extends Component {
                 <div className="button-container">
                     <button className="folder-add">Add Folder</button>
                 </div>
+                {/* <AddFolderForm /> */}
             </section>
         )
     }

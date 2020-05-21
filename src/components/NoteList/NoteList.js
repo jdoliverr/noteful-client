@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import NotefulContext from '../../NotefulContext'
+import NotefulContext from '../../NotefulContext';
 import Note from '../Note/Note';
+import AddNoteForm from '../AddNoteForm/AddNoteForm';
 
 class NoteList extends Component {
     static contextType = NotefulContext;
@@ -23,6 +24,7 @@ class NoteList extends Component {
             <section className="main-note-container">
                 {notes}
                 <button className="note-add">Add note</button>
+                {/* <AddNoteForm /> */}
             </section>
         )
     }
