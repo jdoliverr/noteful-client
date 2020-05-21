@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import NotefulContext from '../../NotefulContext'
+import NotefulError from '../NotefulError/NotefulError';
 import Folder from '../Folder/Folder';
 import AddFolderForm from '../AddFolderForm/AddFolderForm';
+import PropTypes from 'prop-types';
 
 class Sidebar extends Component {
    static contextType = NotefulContext;
 
-
-
     render() {
-
-
 
         if(this.context.addingFolder) {
             return (
@@ -22,7 +20,11 @@ class Sidebar extends Component {
         }
 
         const folders = this.context.folders.map(folder => {
-            return <Folder name={folder.name} id={folder.id} key={folder.id} />
+            return (
+                <NotefulError key={'NE'+ folder.id}>
+                    <Folder name={folder.name} id={folder.id} key={folder.id} />
+                </NotefulError>
+            )
         })
 
 
@@ -39,6 +41,12 @@ class Sidebar extends Component {
             </NotefulContext.Consumer>
         )
     }
+}
+
+Sidebar.propTypes = {
+    history: PropTypes.object,
+    match: PropTypes.object,
+    location: PropTypes.object
 }
 
 export default Sidebar;

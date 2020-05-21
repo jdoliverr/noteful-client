@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NotefulContext from '../../NotefulContext';
+import PropTypes from 'prop-types';
 
 class AddNoteForm extends Component {
     static contextType = NotefulContext;
@@ -85,6 +86,12 @@ class AddNoteForm extends Component {
             </NotefulContext.Consumer>
         )
     }
+}
+
+AddNoteForm.propTypes = {
+    history: PropTypes.object,
+    match: PropTypes.object,
+    location: PropTypes.object
 }
 
 export default AddNoteForm;

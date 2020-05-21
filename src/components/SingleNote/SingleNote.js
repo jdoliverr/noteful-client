@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { NavLink, Redirect } from 'react-router-dom';
 import NotefulContext from '../../NotefulContext';
+import NotefulError from '../NotefulError/NotefulError';
+import PropTypes from 'prop-types';
 
 class SingleNote extends Component {
     static contextType = NotefulContext;
@@ -36,28 +38,35 @@ class SingleNote extends Component {
         
         const date = new Date(currentNote.modified);
         return (
+            
             <NotefulContext.Consumer>
                 {(context) => (
                 <>
-                    <div className="note-container">
-                        <NavLink to={`/note/${this.props.noteId}`} className="note-link">{currentNote.name}</NavLink>
-                        <div className="note-bottom">
-                            <div className="note-mod">{date.toLocaleString()}</div>
-                            <button 
-                                className="note-delete" 
-                                onClick={() => {
-                                    this.deleteNoteRequest(currentNote.id, context.deleteNote)
-                                }}>Delete Note</button>
+                    <NotefulError>
+                        <div className="note-container">
+                            <NavLink to={`/note/${this.props.noteId}`} className="note-link">{currentNote.name}</NavLink>
+                            <div className="note-bottom">
+                                <div className="note-mod">{date.toLocaleString()}</div>
+                                <button 
+                                    className="note-delete" 
+                                    onClick={() => {
+                                        this.deleteNoteRequest(currentNote.id, context.deleteNote)
+                                    }}>Delete Note</button>
+                            </div>
                         </div>
-                    </div>
-                    <div className="note-content">
-                        <p>{currentNote.content}</p>
-                    </div>
+                        <div className="note-content">
+                            <p>{currentNote.content}</p>
+                        </div>
+                    </NotefulError>
                 </>
             )}
             </NotefulContext.Consumer>
         )
     }
+}
+
+SingleNote.propTypes = {
+    noteId: PropTypes.string
 }
 
 export default SingleNote;

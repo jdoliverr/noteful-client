@@ -56,6 +56,13 @@ class App extends Component {
       addingFolder: true
     })
   }
+
+  toggleHome = () => {
+    this.setState({
+      addingFolder: false,
+      addingNote: false
+    })
+  }
   
   deleteNote = (noteId) => {
     const newNotes = this.state.notes.filter(note => note.id !== noteId)
@@ -116,7 +123,7 @@ class App extends Component {
     return (
       <div className='App'>
           <header>
-            <NavLink to='/' className="header-link">Noteful</NavLink>
+            <NavLink to='/' className="header-link" onClick={this.toggleHome}>Noteful</NavLink>
           </header>
           <main>
             <NotefulContext.Provider value={contextValue}>

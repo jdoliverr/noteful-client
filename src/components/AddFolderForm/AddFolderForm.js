@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import NotefulContext from '../../NotefulContext';
+import PropTypes from 'prop-types';
 
 class AddFolderForm extends Component {
     constructor(props) {
         super(props);
         this.folderInput = React.createRef();
     }
-
-    
-    // const time = new Date();
 
     handleAddFolder(event, callback) {
         event.preventDefault();
@@ -45,7 +43,7 @@ class AddFolderForm extends Component {
 
     render() {
 
-        console.log(this.props.history);
+        console.log(this.props);
         return (
             <NotefulContext.Consumer>
                 {(context) => (
@@ -62,6 +60,12 @@ class AddFolderForm extends Component {
             </NotefulContext.Consumer>
         )
     }
+}
+
+AddFolderForm.propTypes = {
+    history: PropTypes.object,
+    match: PropTypes.object,
+    location: PropTypes.object
 }
 
 export default AddFolderForm;

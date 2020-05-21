@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import NotefulContext from '../../NotefulContext';
+import PropTypes from 'prop-types';
 
 class Note extends Component {
 
@@ -47,6 +48,13 @@ class Note extends Component {
             </NotefulContext.Consumer>
         )
     }
+}
+
+Note.propTypes = {
+    date: PropTypes.string.isRequired,
+    folderId: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired
 }
 
 export default Note;
