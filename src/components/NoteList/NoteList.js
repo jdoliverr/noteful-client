@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import NotefulContext from '../../NotefulContext';
 import Note from '../Note/Note';
 import AddNoteForm from '../AddNoteForm/AddNoteForm';
+import { NavLink } from 'react-router-dom'
 
 class NoteList extends Component {
     static contextType = NotefulContext;
@@ -23,7 +24,7 @@ class NoteList extends Component {
         return (
             <section className="main-note-container">
                 {notes}
-                <button className="note-add">Add note</button>
+                <NavLink to="/add-note" className="note-add">Add note</NavLink>
                 {/* <AddNoteForm /> */}
             </section>
         )
