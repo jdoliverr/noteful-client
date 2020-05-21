@@ -2,6 +2,8 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import NotePage from './components/NotePage/NotePage';
 import MainPage from './components/MainPage/MainPage';
+import AddFolderForm from './components/AddFolderForm/AddFolderForm';
+import AddNoteForm from './components/AddNoteForm/AddNoteForm';
 
 
 class Routes extends React.Component {
@@ -32,6 +34,14 @@ class Routes extends React.Component {
                             onHomeClick={() => routeProps.history.push('/')}
                         />)
                     }}
+                />
+                <Route 
+                    path='/add-folder'
+                    component={AddFolderForm}
+                />
+                <Route
+                    path='/add-note'
+                    component={AddNoteForm}
                 />
             </Switch>
         )

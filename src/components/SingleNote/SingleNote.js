@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { NavLink, Redirect } from 'react-router-dom';
-import NotefulContext from '../../NotefulContext'
+import NotefulContext from '../../NotefulContext';
 
 class SingleNote extends Component {
     static contextType = NotefulContext;
 
     deleteNoteRequest(noteId, callback) {
         const baseUrl = 'http://localhost:9090/notes/' + noteId;
-        console.log(baseUrl)
         fetch(baseUrl, {
             method: 'DELETE',
             headers: {

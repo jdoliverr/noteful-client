@@ -24,6 +24,13 @@ class App extends Component {
       notes
     })
   }
+
+  addFolder = (folder) => {
+    const newFolders = [...this.state.folders, folder];
+    this.setState({
+      folders: newFolders
+    })
+  }
   
   deleteNote = (noteId) => {
     const newNotes = this.state.notes.filter(note => note.id !== noteId)
@@ -72,9 +79,11 @@ class App extends Component {
     const contextValue = {
       folders: this.state.folders,
       notes: this.state.notes,
-      deleteNote: this.deleteNote
+      deleteNote: this.deleteNote,
+      addFolder: this.addFolder
     }
 
+    
     return (
       <div className='App'>
           <header>
