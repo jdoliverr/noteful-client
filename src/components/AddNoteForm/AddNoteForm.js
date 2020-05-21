@@ -11,8 +11,6 @@ class AddNoteForm extends Component {
         this.noteDescription = React.createRef();
     }
 
-    // const time = new Date();
-
     handleAddNote(event, callback) {
         event.preventDefault();
         const noteName = this.noteNameInput.current.value;
@@ -51,7 +49,6 @@ class AddNoteForm extends Component {
             })
             .then(data => {
                 callback(data);
-                console.log(data);
                 this.props.history.push('/');
             })
             .catch(err => console.log(err.message));

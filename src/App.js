@@ -9,7 +9,9 @@ class App extends Component {
       super(props)
       this.state = {
         folders: [],
-        notes: []
+        notes: [],
+        addingNote: false,
+        addingFolder: false
       }
   }
 
@@ -28,14 +30,30 @@ class App extends Component {
   addFolder = (folder) => {
     const newFolders = [...this.state.folders, folder];
     this.setState({
-      folders: newFolders
+      folders: newFolders,
+      addingFolder: false
     })
   }
 
   addNote = (note) => {
     const newNotes = [...this.state.notes, note];
     this.setState({
-      notes: newNotes
+      notes: newNotes,
+      addingNote: false
+    })
+  }
+
+  toggleAddingNote = () => {
+    console.log(`ran toggleAddingNote`);
+    this.setState({
+      addingNote: true
+    })
+  }
+
+  toggleAddingFolder = () => {
+    console.log(`ran toggleAddingFolder`);
+    this.setState({
+      addingFolder: true
     })
   }
   
@@ -86,11 +104,14 @@ class App extends Component {
     const contextValue = {
       folders: this.state.folders,
       notes: this.state.notes,
+      addingNote: this.state.addingNote,
+      addingFolder: this.state.addingFolder,
+      toggleAddingNote: this.toggleAddingNote,
+      toggleAddingFolder: this.toggleAddingFolder,
       deleteNote: this.deleteNote,
       addFolder: this.addFolder,
       addNote: this.addNote
     }
-
     
     return (
       <div className='App'>

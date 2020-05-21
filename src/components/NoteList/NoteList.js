@@ -10,6 +10,14 @@ class NoteList extends Component {
     render() {
         let newNotes = [];
 
+        if(this.context.addingNote) {
+            return (
+                <section className="main-note-container">
+                    <AddNoteForm {...this.props} />
+                </section>
+            )
+        }
+
         if(this.props.folderId === undefined) {
             newNotes = this.context.notes;
         } else {
@@ -20,13 +28,17 @@ class NoteList extends Component {
             const date = new Date(note.modified);
             return <Note name={note.name} key={note.id} id={note.id} folderId={note.folderId} date={date.toLocaleString()} />
         })
-
+        
         return (
-            <section className="main-note-container">
-                {notes}
-                <NavLink to="/add-note" className="note-add">Add note</NavLink>
-                {/* <AddNoteForm /> */}
-            </section>
+            <NotefulContext.Consumer>
+                {(context) => (
+                    <section className="main-note-container">
+                        {notes}
+                        <NavLink to="/add-note" className="note-add" onClick={context.toggleAddingNote}>Add note</NavLink>
+
+                    </section>
+                )}
+            </NotefulContext.Consumer>
         )
     }
 }

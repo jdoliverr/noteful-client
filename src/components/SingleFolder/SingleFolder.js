@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 import NotefulContext from '../../NotefulContext';
 
 class SingleFolder extends Component {
@@ -14,7 +14,7 @@ class SingleFolder extends Component {
         const currentFolder = this.context.folders.find(folder => folder.id === currentNote.folderId);
         return (
             <div className="note-view-folder-container">
-                <a onClick={this.props.onHomeClick} className="folder-back">Go Back</a>
+                <NavLink to="/" className="folder-back">Go Back</NavLink>
                 <h2 className="folder-header">{currentFolder.name}</h2>
             </div> 
 

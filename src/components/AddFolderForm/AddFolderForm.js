@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import NotefulContext from '../../NotefulContext';
 
 class AddFolderForm extends Component {
@@ -8,6 +7,7 @@ class AddFolderForm extends Component {
         this.folderInput = React.createRef();
     }
 
+    
     // const time = new Date();
 
     handleAddFolder(event, callback) {
@@ -44,6 +44,8 @@ class AddFolderForm extends Component {
     }
 
     render() {
+
+        console.log(this.props.history);
         return (
             <NotefulContext.Consumer>
                 {(context) => (

@@ -10,10 +10,10 @@ class NotePage extends Component {
         return (
             <div className="wrapper">
                 <section className="main-folder-container">
-                    <SingleFolder noteId={this.props.noteId} onHomeClick={this.props.onHomeClick}/>
+                    <SingleFolder noteId={this.props.noteId}/>
                 </section>
                 <section className="main-note-container">
-                    <SingleNote noteId={this.props.noteId} onHomeClick={this.props.onHomeClick}/>
+                    <SingleNote noteId={this.props.noteId}/>
                 </section>
             </div>
         )

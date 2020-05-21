@@ -6,10 +6,11 @@ import NoteList from '../NoteList/NoteList'
 class MainPage extends Component {
 
     render() {
+
         return (
             <div className="wrapper">
-                <Sidebar />
-                <NoteList folderId={this.props.folderId}/>
+                <Sidebar {...this.props} />
+                <NoteList folderId={this.props.folderId} {...this.props} />
             </div>
         )
     }
