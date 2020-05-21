@@ -69,8 +69,7 @@ class AddNoteForm extends Component {
                                 <h3 className="note-header">New Note</h3>
                                 <input type="text" id="note-name" name="note-name" placeholder="Note Name Here" ref={this.noteNameInput} required />
                                 <h3 className="note-header">Select Folder</h3>
-                                <select id="folder-select" name="folder-select" ref={this.folderInput} defaultValue="choice" required>
-                                    <option disabled value="choice">Choose Folder</option>
+                                <select id="folder-select" name="folder-select" ref={this.folderInput} required>
                                     {options}
                                 </select>
                             </div>

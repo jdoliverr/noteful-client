@@ -50,7 +50,7 @@ class AddFolderForm extends Component {
                     <div className="folder-container">
                         <form id="folder-form" onSubmit={e => this.handleAddFolder(e, context.addFolder)}>
                             <h3 className="folder-header">New Folder</h3>
-                            <input type="text" id="folder-name" name="folder-name" placeholder="Folder Name Here" ref={this.folderInput}/>
+                            <input type="text" id="folder-name" name="folder-name" placeholder="Folder Name Here" ref={this.folderInput} required/>
                             <div className="button-container">
                                 <button type="submit" className="folder-add">Submit</button>
                             </div>

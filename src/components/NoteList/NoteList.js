@@ -41,7 +41,6 @@ class NoteList extends Component {
                     <section className="main-note-container">
                         {notes}
                         <NavLink to="/add-note" className="note-add" onClick={context.toggleAddingNote}>Add note</NavLink>
-
                     </section>
                 )}
             </NotefulContext.Consumer>
