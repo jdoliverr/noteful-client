@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import Routes from './Routes'
 import NotefulContext from './NotefulContext';
 import './App.css';
+import NotefulError from './components/NotefulError/NotefulError'
 
 class App extends Component {
   constructor(props) {
@@ -11,7 +12,8 @@ class App extends Component {
         folders: [],
         notes: [],
         addingNote: false,
-        addingFolder: false
+        addingFolder: false,
+        hasError: false
       }
   }
 
@@ -91,7 +93,10 @@ class App extends Component {
       .then(data => {
         this.setFolders(data)
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err)
+        this.setState({hasError: true}) 
+      });
 
     fetch(noteUrl, options)
       .then(res => {
@@ -103,7 +108,10 @@ class App extends Component {
       .then(data => {
         this.setNotes(data)
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err)
+        this.setState({hasError: true}) 
+      });
         
   }
 
@@ -120,6 +128,9 @@ class App extends Component {
       addNote: this.addNote
     }
     
+    if(this.state.hasError) {
+      throw new Error('Error')
+    }
     return (
       <div className='App'>
           <header>

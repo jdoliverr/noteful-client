@@ -54,7 +54,18 @@ Note.propTypes = {
     date: PropTypes.string.isRequired,
     folderId: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired
+    name: (props, propName, componentName) => {
+        const prop = props[propName];
+        if(!prop) {
+            return new Error(`${propName} is required in ${componentName}. Validation Failed`);
+        }
+        if (typeof prop != 'string') {
+            return new Error(`Invalid prop, ${propName} is expected to be a string in ${componentName}. ${typeof prop} found.`);
+        }
+        if (prop.length === 0) {
+        return new Error(`Invalid prop, ${propName} must be entered. Validation Failed.`);
+        }
+    }
 }
 
 export default Note;
