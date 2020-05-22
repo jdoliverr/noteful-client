@@ -71,9 +71,8 @@ header {
 .folder-add {
   margin-top: 10px;
   margin-bottom: 10px;
-  height: 40px;
   width: 70%;
-  padding: 0px 5px;
+  padding: 5px;
   background-color: white;
   border: 1px solid black;
   border-style: solid;
