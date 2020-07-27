@@ -73,9 +73,9 @@ class App extends Component {
     })
   }
 
-  componentDidMount() {
-    const folderUrl = 'http://localhost:9090/folders';
-    const noteUrl = 'http://localhost:9090/notes';
+  componentDidMount = () => {
+    const folderUrl = 'http://localhost:8000/api/folders';
+    const noteUrl = 'http://localhost:8000/api/notes';
     const options = {
       method: 'GET',
       headers: {
@@ -106,6 +106,7 @@ class App extends Component {
         return res.json();
       })
       .then(data => {
+        console.log(data)
         this.setNotes(data)
       })
       .catch(err => {
@@ -116,6 +117,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.folders)
     const contextValue = {
       folders: this.state.folders,
       notes: this.state.notes,

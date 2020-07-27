@@ -8,7 +8,7 @@ class SingleNote extends Component {
     static contextType = NotefulContext;
 
     deleteNoteRequest(noteId, callback) {
-        const baseUrl = 'http://localhost:9090/notes/' + noteId;
+        const baseUrl = 'http://localhost:8000/api/notes/' + noteId;
         fetch(baseUrl, {
             method: 'DELETE',
             headers: {

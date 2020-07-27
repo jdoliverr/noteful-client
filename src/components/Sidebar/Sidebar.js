@@ -10,7 +10,7 @@ class Sidebar extends Component {
    static contextType = NotefulContext;
 
     render() {
-
+        
         if(this.context.addingFolder) {
             return (
                 <section className="main-folder-container">

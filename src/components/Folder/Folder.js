@@ -4,10 +4,11 @@ import { NavLink } from 'react-router-dom';
 class Folder extends Component {
 
     render() {
-        const folderId = this.props.id;
+        const { id, name } = this.props;
+        console.log(name)
         return (
             <div className="folder-container">
-                <NavLink to={`/folder/${folderId}`}  className="folder-label" >{this.props.name}</NavLink>
+                <NavLink to={`/folder/${id}`}  className="folder-label" >{name}</NavLink>
             </div>
 
         )

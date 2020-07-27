@@ -23,7 +23,7 @@ class AddNoteForm extends Component {
         const currentFolderId = folder.id;
 
 
-        const baseUrl = 'http://localhost:9090/notes';
+        const baseUrl = 'http://localhost:8000/api/notes';
         let noteBody = {
             'name': noteName,
             'folderId': currentFolderId,
@@ -56,6 +56,7 @@ class AddNoteForm extends Component {
 
     }
     render() {
+        console.log(this.context.folders)
         const options = this.context.folders.map(folder => {
             return <option key={folder.id} value={folder.name}>{folder.name}</option>
         })

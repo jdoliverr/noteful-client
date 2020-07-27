@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 class Note extends Component {
 
     deleteNoteRequest(noteId, callback) {
-        const baseUrl = 'http://localhost:9090/notes/' + noteId;
+        const baseUrl = 'http://localhost:8000/api/notes/' + noteId;
         console.log(baseUrl)
         fetch(baseUrl, {
             method: 'DELETE',

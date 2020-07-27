@@ -11,7 +11,7 @@ class AddFolderForm extends Component {
     handleAddFolder(event, callback) {
         event.preventDefault();
         const folder = this.folderInput.current.value;
-        const baseUrl = 'http://localhost:9090/folders';
+        const baseUrl = 'http://localhost:8000/api/folders';
         let folderBody = {
             'name': folder
         };
@@ -42,8 +42,6 @@ class AddFolderForm extends Component {
     }
 
     render() {
-
-        console.log(this.props);
         return (
             <NotefulContext.Consumer>
                 {(context) => (
