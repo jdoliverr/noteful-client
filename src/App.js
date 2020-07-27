@@ -106,7 +106,6 @@ class App extends Component {
         return res.json();
       })
       .then(data => {
-        console.log(data)
         this.setNotes(data)
       })
       .catch(err => {
@@ -117,7 +116,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.folders)
     const contextValue = {
       folders: this.state.folders,
       notes: this.state.notes,

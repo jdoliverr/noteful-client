@@ -56,7 +56,6 @@ class AddNoteForm extends Component {
 
     }
     render() {
-        console.log(this.context.folders)
         const options = this.context.folders.map(folder => {
             return <option key={folder.id} value={folder.name}>{folder.name}</option>
         })

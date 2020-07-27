@@ -5,7 +5,6 @@ class Folder extends Component {
 
     render() {
         const { id, name } = this.props;
-        console.log(name)
         return (
             <div className="folder-container">
                 <NavLink to={`/folder/${id}`}  className="folder-label" >{name}</NavLink>

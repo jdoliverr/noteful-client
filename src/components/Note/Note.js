@@ -7,7 +7,6 @@ class Note extends Component {
 
     deleteNoteRequest(noteId, callback) {
         const baseUrl = 'http://localhost:8000/api/notes/' + noteId;
-        console.log(baseUrl)
         fetch(baseUrl, {
             method: 'DELETE',
             headers: {
@@ -52,8 +51,7 @@ class Note extends Component {
 
 Note.propTypes = {
     date: PropTypes.string.isRequired,
-    folderId: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     name: (props, propName, componentName) => {
         const prop = props[propName];
         if(!prop) {

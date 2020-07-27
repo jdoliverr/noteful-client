@@ -30,7 +30,7 @@ class NoteList extends Component {
             const date = new Date(note.modified);
             return (
                 <NotefulError key={'NE'+ note.id}>
-                    <Note name={note.name} key={note.id} id={note.id} folderId={note.folderId} date={date.toLocaleString()} />
+                    <Note name={note.name} key={note.id} id={note.id} folderId={note.folderid} date={date.toLocaleString()} />
                 </NotefulError>
             )
         })
