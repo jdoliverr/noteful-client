@@ -39,7 +39,7 @@ class AddNoteForm extends Component {
             },
             body: noteBody
         };
-        console.log('Note: ', noteBody);
+        // console.log('Note: ', noteBody);
 
         fetch(baseUrl, options)
             .then(res => {
