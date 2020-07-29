@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 class Note extends Component {
 
     deleteNoteRequest(noteId, callback) {
-        const baseUrl = 'http://localhost:8000/api/notes/' + noteId;
+        const baseUrl = 'https://agile-plains-65913.herokuapp.com/api/notes/' + noteId;
         fetch(baseUrl, {
             method: 'DELETE',
             headers: {

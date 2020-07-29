@@ -11,7 +11,7 @@ class AddFolderForm extends Component {
     handleAddFolder(event, callback) {
         event.preventDefault();
         const folder = this.folderInput.current.value;
-        const baseUrl = 'http://localhost:8000/api/folders';
+        const baseUrl = 'https://agile-plains-65913.herokuapp.com/api/folders';
         let folderBody = {
             'name': folder
         };

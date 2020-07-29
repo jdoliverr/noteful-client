@@ -74,8 +74,8 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    const folderUrl = 'http://localhost:8000/api/folders';
-    const noteUrl = 'http://localhost:8000/api/notes';
+    const folderUrl = 'https://agile-plains-65913.herokuapp.com/api/folders';
+    const noteUrl = 'https://agile-plains-65913.herokuapp.com/api/notes';
     const options = {
       method: 'GET',
       headers: {

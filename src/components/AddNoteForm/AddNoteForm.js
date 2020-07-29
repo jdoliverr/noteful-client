@@ -23,7 +23,7 @@ class AddNoteForm extends Component {
         const currentFolderId = folder.id;
 
 
-        const baseUrl = 'http://localhost:8000/api/notes';
+        const baseUrl = 'https://agile-plains-65913.herokuapp.com/api/notes';
         let noteBody = {
             'name': noteName,
             'folderId': currentFolderId,
